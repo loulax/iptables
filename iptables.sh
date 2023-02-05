@@ -19,6 +19,10 @@ iptables -A OUTPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NE
 iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp -m multiport --sports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
 
+# ALLOW DNS REQUEST FROM LAN
+iptables -A INPUT -p udp --dport 53 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p udp --sport 53 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+
 # ALLOW SSH FROM WAN
 iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p tcp --sport 22 -m conntrack --ctstate ESTABLISHED -j ACCEPT
