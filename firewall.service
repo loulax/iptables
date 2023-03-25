@@ -1,0 +1,15 @@
+[Unit]
+Description=IPtables firewall
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/etc/init.d/iptables.sh
+ExecStop=/etc/init.d/restore.sh
+User=root
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+Alias=fw.service
