@@ -7,8 +7,8 @@
 /usr/sbin/iptables -t nat -X
 
 #SET DEFAULT POLICY
-/usr/sbin/iptables -P fw_in_allowed DROP
-/usr/sbin/iptables -P fw_out_allowed DROP
+/usr/sbin/iptables -P INPUT DROP
+/usr/sbin/iptables -P OUTPUT DROP
 /usr/sbin/iptables -P FORWARD DROP
 
 #SET CUSTOM CHAIN
