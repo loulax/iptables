@@ -12,12 +12,12 @@
 /usr/sbin/iptables -P FORWARD DROP
 
 #SET CUSTOM CHAIN
-iptables -N fw_in_allowed
-iptablkes -N fw_out_allowed
+/usr/sbin/iptables -N fw_in_allowed
+/usr/sbin/iptables -N fw_out_allowed
 
 #REDIRECT DEFAULT CHAIN TO NEW
-iptables -A INPUT -j fw_in_allowed
-iptables -A OUPUT -j fw_out_allowed
+/usr/sbin/iptables -A INPUT -j fw_in_allowed
+/usr/sbin/iptables -A OUTPUT -j fw_out_allowed
 
 # ALLOW WEB REQUEST FROM LAN
 /usr/sbin/iptables -A fw_in_allowed -p tcp -m multiport --sports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
