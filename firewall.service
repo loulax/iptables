@@ -4,8 +4,8 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/etc/init.d/iptables.sh
-ExecStop=/etc/init.d/restore.sh
+ExecStart=/etc/init.d/fw_on.sh
+ExecStop=/etc/init.d/fw_off.sh
 User=root
 Type=oneshot
 RemainAfterExit=yes
