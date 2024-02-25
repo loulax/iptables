@@ -29,7 +29,7 @@ $iptables -t nat -A POSTROUTING -j post_route
 
 # ALLOW WEB REQUEST FROM LAN
 $iptables -A net_in -p tcp -m multiport --sports 80,443 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-$iptables -A net_in -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+$iptables -A net_out -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
 # ALLOW DNS REQUEST FROM LAN
 $iptables -A net_in -p udp --sport 53 -m conntrack --ctstate ESTABLISHED -j ACCEPT
