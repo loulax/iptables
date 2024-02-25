@@ -32,8 +32,8 @@ $iptables -A net_in -p tcp -m multiport --sports 80,443 -m conntrack --ctstate E
 $iptables -A net_in -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
 # ALLOW DNS REQUEST FROM LAN
-$iptables -A net_in -p udp --dport 53 -m conntrack --ctstate ESTABLISHED -j ACCEPT
-$iptables -A net_out -p udp --sport 53 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+$iptables -A net_in -p udp --sport 53 -m conntrack --ctstate ESTABLISHED -j ACCEPT
+$iptables -A net_out -p udp --dport 53 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 
 # ALLOW WEB ACCESS FROM WAN
 $iptables -A net_in -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
